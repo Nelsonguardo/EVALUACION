@@ -1,0 +1,44 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Registros médicos</title>  
+     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+</head>  
+<body>  
+<table style="text-align: center;" class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Edad</th>
+        <th>Peso</th>
+        <th>Ritmo cardíaco</th>
+        <th>SpO2</th>
+        <th>Nivel de estres</th>
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for employee in employees %}  
+    <tr>  
+        <td>{{ employee.nombre }}</td>
+        <td>{{ employee.apellido }}</td>
+        <td>{{ employee.edad }}</td>
+        <td>{{ employee.peso }}</td>
+        <td>{{ employee.frecuencia_cardiaca }} BPM</td>
+        <td>{{ employee.spo2 }} %</td>
+        <td>{{ employee.nivel_estres }}</td>
+        <td>  
+            <a href="/edit/{{ employee.id }}"><span class="glyphicon glyphicon-pencil" >Editar</span></a>  
+            <a href="/delete/{{ employee.id }}">Eliminar</a>  
+        </td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<center><a href="/emp" class="btn btn-primary">Añadir nuevo registro</a></center>  
+</body>  
+</html> 
